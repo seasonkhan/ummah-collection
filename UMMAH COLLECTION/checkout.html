@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - UMMAH COLLECTION</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="UMMAH Logo" class="custom-logo" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <i class="fas fa-star-and-crescent"></i>
+                    <span>UMMAH COLLECTION</span>
+                </div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="checkout-page-new">
+        <!-- Progress Steps -->
+        <div class="checkout-progress">
+            <div class="step completed">
+                <div class="step-number"><i class="fas fa-shopping-cart"></i></div>
+                <span>Cart</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step active">
+                <div class="step-number">2</div>
+                <span>Checkout</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <span>Confirmation</span>
+            </div>
+        </div>
+
+        <div class="checkout-layout">
+            <!-- Left Column: Billing & Shipping -->
+            <div class="checkout-main">
+                <div class="checkout-card">
+                    <h3><i class="fas fa-user"></i> Customer Information</h3>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label>Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" placeholder="01XXX-XXXXXX" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (Optional)</label>
+                        <input type="email" id="email" placeholder="example@email.com">
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Shipping Address</h3>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label>Division <span class="required">*</span></label>
+                            <select id="division" required onchange="loadDistricts()">
+                                <option value="">Select Division</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>District <span class="required">*</span></label>
+                            <select id="district" required onchange="updateDeliveryFee()">
+                                <option value="">Select District</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Address <span class="required">*</span></label>
+                        <textarea id="address" placeholder="House, Road, Area, City" required></textarea>
+                    </div>
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" id="city" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label>Postal Code</label>
+                            <input type="text" id="postal-code" placeholder="1200">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+                    <div class="payment-options-new">
+                        <label class="payment-radio">
+                            <input type="radio" name="payment" value="cod" checked>
+                            <div class="payment-info">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Cash on Delivery</span>
+                            </div>
+                        </label>
+                        <label class="payment-radio">
+                            <input type="radio" name="payment" value="bkash">
+                            <div class="payment-info">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>bKash</span>
+                            </div>
+                        </label>
+                        <label class="payment-radio">
+                            <input type="radio" name="payment" value="nagad">
+                            <div class="payment-info">
+                                <i class="fas fa-wallet"></i>
+                                <span>Nagad</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Order Summary -->
+            <div class="checkout-sidebar">
+                <div class="order-summary-card">
+                    <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+                    <div id="checkout-items" class="order-items-list"></div>
+                    <div class="order-totals">
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">৳0</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Delivery Fee</span>
+                            <span id="checkout-delivery-fee">৳0</span>
+                        </div>
+                        <div class="total-row grand-total">
+                            <span>Total</span>
+                            <span id="checkout-total">৳0</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-place-order" onclick="placeOrder()">
+                        <i class="fas fa-lock"></i> Place Order
+                    </button>
+                    <p class="secure-note">
+                        <i class="fas fa-shield-alt"></i> Your information is secure
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal-content">
+            <div class="success-animation">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for shopping with UMMAH COLLECTION</p>
+            <div class="order-id-box">
+                <span>Order ID:</span>
+                <strong id="order-id"></strong>
+            </div>
+            <p class="contact-note">We will contact you soon at your phone number.</p>
+            <button onclick="window.location.href='index.html'" class="btn-primary">Continue Shopping</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2024 UMMAH COLLECTION. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - UMMAH COLLECTION</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-star-and-crescent"></i>
+                UMMAH COLLECTION
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="products-page">
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul class="category-list">
+                <li><button class="category-btn active" data-category="all">All Products</button></li>
+                <li><button class="category-btn" data-category="attar">Attar & Perfume</button></li>
+                <li><button class="category-btn" data-category="clothing">Islamic Clothing</button></li>
+                <li><button class="category-btn" data-category="accessories">Accessories</button></li>
+                <li><button class="category-btn" data-category="books">Islamic Books</button></li>
+            </ul>
+        </aside>
+        
+        <section class="products-container">
+            <div class="products-header">
+                <h2>Our Products</h2>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="products-grid" id="all-products"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UMMAH COLLECTION</h3>
+                <p>Your trusted source for Islamic products</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="admin.html">Admin Panel</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-phone"></i> +880 1827315283</p>
+                <p><i class="fas fa-envelope"></i> seasonkhan620@email.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UMMAH COLLECTION. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
